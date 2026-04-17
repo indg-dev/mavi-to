@@ -1,0 +1,8 @@
+# Runtime-generated artifacts — written by the bot, never checked in.
+a/
+
+# macOS / editor cruft
+.DS_Store
+*.swp
+.vscode/
+.idea/
