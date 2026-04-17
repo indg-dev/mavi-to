@@ -1,116 +1,44 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>mavi.to — design system</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/_mavi.css">
-<script type="module" src="/_mavi.js"></script>
+<meta name="robots" content="noindex,nofollow">
+<title>🧿</title>
 <style>
-  .toggle {
-    position: fixed; top: 1rem; right: 1rem;
-    background: var(--surface); border: 1px solid var(--border);
-    padding: 0.5rem 0.75rem; border-radius: 4px; cursor: pointer;
-    color: var(--text-2); z-index: 100;
-    font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
-    font-weight: 700;
+  html, body {
+    height: 100%;
+    margin: 0;
+    background: #0A0A0A;
+    color: #F5F5F5;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .example-sep {
-    max-width: 1200px; margin: 4rem auto 0;
-    padding: 2rem 2rem 0;
-    border-top: 1px dashed var(--border);
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
   }
-  .example-sep .mavi-eyebrow { color: var(--text-2); }
+  .eye {
+    font-size: clamp(6rem, 18vw, 13rem);
+    line-height: 1;
+    user-select: none;
+  }
+  .caption {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
-
-<button class="toggle"
-        onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='light'?'dark':'light'">
-  toggle theme
-</button>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     1. Dashboard — metrics + charts + table
-     ═══════════════════════════════════════════════════════════════ -->
-
-<mavi-dashboard title="MAVI" nav="Overview · Traffic · Errors" date="16 APR 2026 — 14:02">
-  <mavi-metric label="Requests" value="1.2M" trend="+8%"></mavi-metric>
-  <mavi-metric label="Latency p95" value="312ms" trend="-14ms"></mavi-metric>
-  <mavi-metric label="Errors" value="0.04%" trend="+0.01%"></mavi-metric>
-  <mavi-metric label="Uptime" value="99.98%" accent></mavi-metric>
-
-  <mavi-chart type="bar" label="Throughput / month" values="180,140,220,90" labels="Jan,Feb,Mar,Apr" highlight="2" span="8"></mavi-chart>
-  <mavi-chart type="donut" label="Success" values="97" span="4"></mavi-chart>
-
-  <mavi-bar label="API" percent="72" value="72%"></mavi-bar>
-  <mavi-bar label="Webhooks" percent="58" value="58%"></mavi-bar>
-  <mavi-bar label="Streams" percent="34" value="34%" accent></mavi-bar>
-  <mavi-bar label="Queue" percent="19" value="19%"></mavi-bar>
-
-  <mavi-table
-    headers="Date,Requests,p95,Errors"
-    rows='[["2026-04-14","1.1M","308ms","0.03%"],["2026-04-15","1.2M","312ms","0.04%"],["2026-04-16","1.3M","301ms","0.02%"]]'>
-  </mavi-table>
-</mavi-dashboard>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     2. One-pager — hero + KPIs + lede
-     ═══════════════════════════════════════════════════════════════ -->
-
-<div class="example-sep"><span class="mavi-eyebrow">02 · One-pager (hero)</span></div>
-
-<mavi-report eyebrow="MAVI · REPORT 014"
-             title="Q1 throughput up 42%."
-             subtitle="Weekly active bridges grew after the April rewrite."
-             date="2026-04-16">
-
-  <mavi-section eyebrow="Headline" title="">
-    <mavi-hero value="42%" style="color:var(--accent)"></mavi-hero>
-    <p class="mavi-lede" style="margin-top:1.5rem">
-      Grew from 904 weekly actives in January to 1,284 at quarter close.
-      Latency-rewrite landed week 9 and cut median response by a third.
-    </p>
-  </mavi-section>
-
-  <mavi-section eyebrow="KPIs" title="Quarterly metrics">
-    <mavi-bento>
-      <mavi-metric label="Active" value="1,284"></mavi-metric>
-      <mavi-metric label="Latency p95" value="312ms" trend="-14ms"></mavi-metric>
-      <mavi-metric label="Errors" value="0.04%" trend="+0.01%"></mavi-metric>
-      <mavi-metric label="Uptime" value="99.98%" accent></mavi-metric>
-    </mavi-bento>
-  </mavi-section>
-
-</mavi-report>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     3. Asymmetric bento — explicit spans + rowspans
-     ═══════════════════════════════════════════════════════════════ -->
-
-<div class="example-sep"><span class="mavi-eyebrow">03 · Asymmetric bento (explicit overrides)</span></div>
-
-<mavi-dashboard title="MAVI" nav="Asymmetric" date="16 APR 2026">
-  <mavi-metric label="Revenue Q1" value="$680K" accent span="6"></mavi-metric>
-  <mavi-metric label="Deals closed" value="94" trend="+12"></mavi-metric>
-  <mavi-metric label="Avg ticket" value="$9.2K" trend="+$400"></mavi-metric>
-
-  <mavi-chart type="bar" label="Revenue by month"
-              values="1030,826,680,141" labels="Q3-25,Q4-25,Q1-26,Q2-26"
-              highlight="3" span="8" rowspan="2"></mavi-chart>
-  <mavi-metric label="Close rate" value="80%"></mavi-metric>
-  <mavi-metric label="Pipeline" value="$2.1M" accent></mavi-metric>
-  <mavi-metric label="Forecast" value="+18%" trend="+3pt"></mavi-metric>
-  <mavi-metric label="CAC" value="$412" trend="-$22"></mavi-metric>
-
-  <mavi-bar label="PU course" percent="92" value="$620K · 92%" accent span="6"></mavi-bar>
-  <mavi-bar label="Consulting" percent="58" value="$390K · 58%" span="6"></mavi-bar>
-  <mavi-bar label="Subscriptions" percent="34" value="$230K · 34%" span="6"></mavi-bar>
-  <mavi-bar label="Training" percent="19" value="$128K · 19%" span="6"></mavi-bar>
-</mavi-dashboard>
-
+  <div class="eye">🧿</div>
+  <div class="caption">mavi · místico ojo turco</div>
 </body>
 </html>
